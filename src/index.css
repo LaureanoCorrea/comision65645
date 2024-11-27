@@ -1,76 +1,96 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #241336;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-
-a:hover {
-  color: #193d8a;
-}
-
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  font-family: "Arial", sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
 }
 
 h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+  text-align: center;
+  color: #4caf50;
+  margin-bottom: 20px;
 }
 
-button {
-  color: #160707;
+h2 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  background: #fff;
+  margin: 10px auto;
+  padding: 15px;
+  border: 1px solid #ddd;
   border-radius: 8px;
-  margin: 15px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #ad722e;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  transition: transform 0.2s ease;
+}
+
+li:hover {
+  transform: scale(1.03);
+}
+
+a {
+  text-decoration: none;
+  color: #4caf50;
+  font-weight: bold;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.product-image {
+  width: 100px;
+  height: 100px;
+  object-fit: cover; /* Esto asegura que la imagen cubra el área sin distorsionarse */
+  border-radius: 8px; /* Agrega bordes redondeados si lo deseas */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center; /* Centra los productos en la fila */
+}
+
+.product-item {
+  text-align: center; /* Centra el contenido del producto */
+  max-width: 120px; /* Limita el tamaño máximo del item */
+}
+button {
+  padding: 10px 20px;
+  margin: 10px auto;
+  display: block;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
   cursor: pointer;
-  transition: border-color 0.25s;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
 }
 
 button:hover {
-  background-color: #2ead54;
-  color: #ffffff;
+  background-color: #45a049;
 }
 
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+div.CartWidget {
+  text-align: right;
+  margin-right: 20px;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-
-  a:hover {
-    color: #747bff;
-  }
-
-  button {
-    background-color: #db3737;
-  }
+footer {
+  text-align: center;
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #333;
+  color: #fff;
 }
