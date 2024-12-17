@@ -1,0 +1,118 @@
+.spinner {
+	border: 4px solid rgba(0, 0, 0, 0.1);
+	border-left-color: #4caf50;
+	border-radius: 50%;
+	width: 24px;
+	height: 24px;
+	animation: spin 1s linear infinite;
+	display: inline-block;
+	margin-right: 5px;
+}
+
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+.checkout-item-image {
+	width: 80px;
+	height: 80px;
+	object-fit: contain;
+	margin-right: 15px;
+	border-radius: 5px;
+}
+
+.checkout-item {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 15px;
+	border-bottom: 1px solid #ddd;
+	padding-bottom: 10px;
+}
+
+.checkout-items {
+	list-style: none;
+	padding: 0;
+}
+
+.checkout-item p {
+	margin: 0;
+	font-size: 14px;
+	color: #555;
+}
+
+.offcanvas {
+	position: fixed;
+	top: 20%;
+	left: 50%;
+	transform: translate(-50%, 0);
+	background-color: #e1ebe2;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	padding: 20px;
+	border-radius: 8px;
+	z-index: 1000;
+	text-align: center;
+}
+
+.buyer-form {
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+	margin-top: 20px;
+	max-width: 400px;
+	margin: 0 auto;
+	border: 1px #8f8b8b solid;
+	border-radius: 12px;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 58%);
+}
+
+.buyer-form label {
+	display: flex;
+	flex-direction: column;
+	font-size: 14px;
+	font-weight: bold;
+	color: #333;
+	margin: 8px;
+}
+
+.buyer-form input {
+	padding: 8px 12px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	font-size: 14px;
+	outline: none;
+	margin: 8px;
+	transition: border-color 0.3s ease;
+}
+
+.buyer-form input:focus {
+	border-color: #4caf50;
+	box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+}
+
+.place-order-button {
+	margin-top: 15px;
+	padding: 10px 15px;
+	background-color: #4caf50;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	font-size: 16px;
+	font-weight: bold;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+
+.place-order-button:hover {
+	background-color: #45a049;
+}
+
+.place-order-button:disabled {
+	background-color: #ccc;
+	cursor: not-allowed;
+}

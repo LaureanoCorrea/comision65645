@@ -1,67 +1,70 @@
-import React, { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
-import { mockProducts } from "../../data/products";
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { getAllProducts, getProductsByCategory } from '../../firebase/firebase';
+import Card from '../Card/Card';
+import './ItemListContainer.css';
 
 const ItemListContainer = () => {
-  const { category } = useParams();
-  const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
+	const { category } = useParams();
+	const [products, setProducts] = useState([]);
+	const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    console.log("Categoría seleccionada:", category);
-    const fetchProducts = new Promise((resolve) => {
-      setTimeout(() => {
-        if (category) {
-          // Filtra productos por categoría
-          const filteredProducts = mockProducts.filter(
-            (item) => item.category === category
-          );
-          resolve(filteredProducts);
-        } else {
-          // Devuelve todos los productos
-          resolve(mockProducts);
-        }
-      }, 1000);
-    });
+	useEffect(() => {
+		setLoading(true);
 
-    fetchProducts
-      .then((data) => {
-        setProducts(data);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error("Error al cargar productos:", error);
-        setLoading(false);
-      });
-  }, [category]);
+		if (category) {
+			getProductsByCategory(category)
+				.then((filteredProducts) => {
+					setProducts(filteredProducts);
+				})
+				.catch((error) => {
+					console.error('Error al cargar productos por categoría:', error);
+				})
+				.finally(() => setLoading(false));
+		} else {
+			getAllProducts()
+				.then((allProducts) => {
+					setProducts(allProducts);
+				})
+				.catch((error) => {
+					console.error('Error al cargar todos los productos:', error);
+				})
+				.finally(() => setLoading(false));
+		}
+	}, [category]);
 
-  if (loading) {
-    return <div>Cargando productos...</div>;
-  }
+	if (loading) {
+		return <div>Cargando productos...</div>;
+	}
 
-  if (products.length === 0) {
-    return <div>No hay productos en esta categoría.</div>;
-  }
+	if (products.length === 0) {
+		return (
+			<div>
+				No hay productos disponibles{' '}
+				{category ? `en la categoría ${category}` : ''}.
+			</div>
+		);
+	}
 
-  return (
-    <div className="item-list-container">
-      <h2>{category ? `Productos de ${category}` : "Todos los productos"}</h2>
-      <ul>
-        {products.map((product) => (
-          <li key={product.id}>
-            <h3>{product.name}</h3>
-            <img
-              src={product.image}
-              alt={product.name}
-              className="product-image"
-            />{" "}
-            <p>Precio: ${product.price.toFixed(2)}</p>
-            <Link to={`/product/${product.id}`}>Ver detalles</Link>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
+	return (
+		<div>
+			<h2>{category ? `Productos de ${category}` : 'Todos los productos'}</h2>
+			<div className='item-list-container'>
+				<div className='item-list'>
+					{products.map((product) => (
+						<Card
+							key={product.id}
+							id={product.id}
+							image={product.image}
+							name={product.title}
+							price={product.price}
+							actionLabel='Ver detalles'
+						/>
+					))}
+				</div>
+			</div>
+		</div>
+	);
 };
 
 export default ItemListContainer;
