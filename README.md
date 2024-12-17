@@ -33,6 +33,8 @@ En el directorio del proyecto, puedes ejecutar los siguientes comandos:
 
 Ejecuta la aplicación en modo desarrollo. Abre [http://localhost:5173](http://localhost:5173) para verla en el navegador.
 
+Visita el sitio desplegado. (https://compradetodo.netlify.app/)
+
 ### `npm run build`
 
 Construye la aplicación para producción en la carpeta `dist`. Empaqueta React en modo de producción y optimiza el build para un mejor rendimiento.
